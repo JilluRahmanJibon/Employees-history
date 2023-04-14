@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import AddEmployee from './AddEmployee';
-import EditModal from './EditModal';
 import { toast } from 'react-hot-toast';
 
 const Home = ({ setsingleEmployee }) => {
     const [employees, setEmployees] = useState([])
- 
+
     // get all employees
     useEffect(() => {
-        fetch('http://localhost:5000/employees',).then(res => res.json()).then(data => {
+        fetch('https://employees-history.vercel.app/employees',).then(res => res.json()).then(data => {
             setEmployees(data)
         })
     }, [employees])
 
     const oneEmployee = (id) => {
-        fetch(`http://localhost:5000/employee/${id}`,).then(res => res.json()).then(data => {
+        fetch(`https://employees-history.vercel.app/employee/${id}`,).then(res => res.json()).then(data => {
             setsingleEmployee(data)
         })
     }
@@ -24,7 +23,7 @@ const Home = ({ setsingleEmployee }) => {
     const deleteEmployee = (id) => {
         const con = window.confirm("Are you sure?")
         if (con) {
-            fetch(`http://localhost:5000/employee/${id}`, {
+            fetch(`https://employees-history.vercel.app/employee/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json'
@@ -81,7 +80,7 @@ const Home = ({ setsingleEmployee }) => {
                 </table>
             </div>
             <AddEmployee />
-          
+
 
         </div>
     );

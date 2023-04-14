@@ -11,7 +11,7 @@ function App() {
     <div className="px-10 pt-10  ">
       <Toaster />
       <Home setsingleEmployee={setsingleEmployee} />
-      {singleEmployee && <EditModal singleEmployee={singleEmployee} />}
+      <EditModal setsingleEmployee={setsingleEmployee} singleEmployee={singleEmployee} />
     </div>
   );
 }
